@@ -1,0 +1,16 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: url('https://lh5.googleusercontent.com/kIXaOf_woyp9TMJp1HAq6zBj1r8qb5IEV0fUy9QVkQy07NMBDuzXauqAqFwgG2TKg0GuSbg5sEmJTfh0nhsUOHNTzENY6lrxAn06iYDhuOrz8ApAPF_yZTEVWcnO6jHjMjwQZ_W0') no-repeat center center;
+  background-size: cover;
+}
+
+.row {
+  max-height: 600px;
+}
+
+.order-list {
+  height: 500px;
+}
