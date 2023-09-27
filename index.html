@@ -12,12 +12,12 @@
     <div class="container" style="background: rgba(0, 0, 0, 0.8);">
       <h2 class="text-center text-light pt-4">Alpha Pos System</h2>
       <div class="row">
-        <div class="col-4">
+        <div class="col-4" data-order-list>
           <div>
             <div class="card mb-3" style="width: 100%;">
               <div class="card-body">
                 <div class="text-end">
-                  <button type="button" class="btn-close" aria-label="Close"></button>
+                  <button type="button" class="btn-close" aria-label="Close" data-alpha-pos="delete-drink"></button>
                 </div>
                 <div>
                   Black Tea
@@ -30,7 +30,7 @@
                 </div>
               </div>
               <div class="card-footer text-end text-muted">
-                $ 50
+                $ <span data-drink-price>50</span>
               </div>
             </div>
             <div class="card mb-3" style="width: 100%;">
@@ -54,108 +54,124 @@
             </div>
           </div>
           <div class="text-end">
-            <button class="btn btn-light">checkout</button>
+            <button class="btn btn-light" data-alpha-pos="checkout">checkout</button>
           </div>
         </div>
-        <div class="col-8">
+        <div class="col-8" data-order-panel>
           <div class="mb-5">
             <div class="row mb-3">
               <div class="col-3">
                 <div class="card" style="width: 100%">
-                  <div class="card-body text-center">
-                    <h5 class="card-title">
-                      Black Tea
-                    </h5>
-                    <div class="d-flex justify-content-center">
-                      <input type="radio" name="drink">
+                  <label>
+                    <div class="card-body text-center">
+                      <h5 class="card-title">
+                        Black Tea
+                      </h5>
+                      <div class="d-flex justify-content-center">
+                        <input type="radio" name="drink" value="Black Tea" checked>
+                      </div>
                     </div>
-                  </div>
+                  </label>
                 </div>
               </div>
               <div class="col-3">
                 <div class="card" style="width: 100%">
-                  <div class="card-body text-center">
-                    <h5 class="card-title">
-                      Oolong Tea
-                    </h5>
-                    <div class="d-flex justify-content-center">
-                      <input type="radio" name="drink">
+                  <label>              
+                    <div class="card-body text-center">
+                      <h5 class="card-title">
+                        Oolong Tea
+                      </h5>
+                      <div class="d-flex justify-content-center">
+                        <input type="radio" name="drink" value="Oolong Tea">
+                      </div>
                     </div>
-                  </div>
+                  </label>
                 </div>
               </div>
               <div class="col-3">
                 <div class="card" style="width: 100%">
-                  <div class="card-body text-center">
-                    <h5 class="card-title">
-                      Baozong Tea
-                    </h5>
-                    <div class="d-flex justify-content-center">
-                      <input type="radio" name="drink">
+                  <label>
+                    <div class="card-body text-center">
+                      <h5 class="card-title">
+                        Baozong Tea
+                      </h5>
+                      <div class="d-flex justify-content-center">
+                        <input type="radio" name="drink" value="Baozong Tea">
+                      </div>
                     </div>
-                  </div>
+                  </label>
                 </div>
               </div>
               <div class="col-3">
                 <div class="card" style="width: 100%">
-                  <div class="card-body text-center">
-                    <h5 class="card-title">
-                      Green Tea
-                    </h5>
-                    <div class="d-flex justify-content-center">
-                      <input type="radio" name="drink">
+                  <label>
+                    <div class="card-body text-center">
+                      <h5 class="card-title">
+                        Green Tea
+                      </h5>
+                      <div class="d-flex justify-content-center">
+                        <input type="radio" name="drink" value="Green Tea">
+                      </div>
                     </div>
-                  </div>
+                  </label>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-3">
                 <div class="card" style="width: 100%">
-                  <div class="card-body text-center">
-                    <h5 class="card-title">
-                      Bubble Milk Tea
-                    </h5>
-                    <div class="d-flex justify-content-center">
-                      <input type="radio" name="drink">
+                  <label>
+                    <div class="card-body text-center">
+                      <h5 class="card-title">
+                        Bubble Milk Tea
+                      </h5>
+                      <div class="d-flex justify-content-center">
+                        <input type="radio" name="drink" value="Bubble Milk Tea">
+                      </div>
                     </div>
-                  </div>
+                  </label>
                 </div>
               </div>
               <div class="col-3">
                 <div class="card" style="width: 100%">
-                  <div class="card-body text-center">
-                    <h5 class="card-title">
-                      Black Tea Latte
-                    </h5>
-                    <div class="d-flex justify-content-center">
-                      <input type="radio" name="drink">
+                  <label>
+                    <div class="card-body text-center">
+                      <h5 class="card-title">
+                        Black Tea Latte
+                      </h5>
+                      <div class="d-flex justify-content-center">
+                        <input type="radio" name="drink" value="Black Tea Latte">
+                      </div>
                     </div>
-                  </div>
+                  </label>
                 </div>
               </div>
               <div class="col-3">
                 <div class="card" style="width: 100%">
-                  <div class="card-body text-center">
-                    <h5 class="card-title">
-                      Lemon Green
-                    </h5>
-                    <div class="d-flex justify-content-center">
-                      <input type="radio" name="drink">
+                  <label>
+                    <div class="card-body text-center">
+                      <h5 class="card-title">
+                        Lemon Green
+                      </h5>
+                      <div class="d-flex justify-content-center">
+                        <input type="radio" name="drink" value="Lemon Green">
+                      </div>
                     </div>
-                  </div>
+                  </label>
                 </div>
               </div>
               <div class="col-3">
                 <div class="card" style="width: 100%">
-                  <div class="card-body text-center">
-                    <h5 class="card-title">
-                      Matcha Latte
-                    </h5>
-                    <div class="d-flex justify-content-center">
-                      <input type="radio" name="drink">
+                  <label>               
+                    <div class="card-body text-center">
+                      <h5 class="card-title">
+                        Matcha Latte
+                      </h5>
+                      <div class="d-flex justify-content-center">
+                        <input type="radio" name="drink" value="Matcha Latte">
+                      </div>
                     </div>
-                  </div>
+                  </label>
                 </div>
               </div>
             </div>
@@ -163,17 +179,17 @@
           <div class="mb-5">
             <h5 class="text-light">Ice</h5>
             <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-              <input type="radio" class="btn-check" name="ice" id="noice" autocomplete="off" checked>
+              <input type="radio" class="btn-check" name="ice" id="noice" autocomplete="off" value="No Ice">
               <label class="btn btn-outline-primary" for="noice">
                 No
               </label>
             
-              <input type="radio" class="btn-check" name="ice" id="lessice" autocomplete="off">
+              <input type="radio" class="btn-check" name="ice" id="lessice" autocomplete="off" value="Less Ice">
               <label class="btn btn-outline-primary" for="lessice">
                 Less
               </label>
             
-              <input type="radio" class="btn-check" name="ice" id="regularice" autocomplete="off">
+              <input type="radio" class="btn-check" name="ice" id="regularice" autocomplete="off" value="Regular Ice" checked>
               <label class="btn btn-outline-primary" for="regularice">
                 Regular
               </label>
@@ -182,34 +198,34 @@
           <div class="mb-5">
             <h5 class="text-light">Sugar</h5>
             <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-              <input type="radio" class="btn-check" name="sugar" id="nosugar" autocomplete="off" checked>
+              <input type="radio" class="btn-check" name="sugar" id="nosugar" autocomplete="off" value="No Sugar">
               <label class="btn btn-outline-primary" for="nosugar">
                 No
               </label>
             
-              <input type="radio" class="btn-check" name="sugar" id="alittlesugar" autocomplete="off">
+              <input type="radio" class="btn-check" name="sugar" id="alittlesugar" autocomplete="off" value="A Little Sugar">
               <label class="btn btn-outline-primary" for="alittlesugar">
                 A Little
               </label>
             
-              <input type="radio" class="btn-check" name="sugar" id="halfsugar" autocomplete="off">
+              <input type="radio" class="btn-check" name="sugar" id="halfsugar" autocomplete="off" value="Half Sugar">
               <label class="btn btn-outline-primary" for="halfsugar">
                 Half
               </label>
 
-              <input type="radio" class="btn-check" name="sugar" id="lesssugar" autocomplete="off">
+              <input type="radio" class="btn-check" name="sugar" id="lesssugar" autocomplete="off" value="Less Sugar">
               <label class="btn btn-outline-primary" for="lesssugar">
                 Less
               </label>
 
-              <input type="radio" class="btn-check" name="sugar" id="regularsugar" autocomplete="off">
+              <input type="radio" class="btn-check" name="sugar" id="regularsugar" autocomplete="off" value="Regular Sugar" checked>
               <label class="btn btn-outline-primary" for="regularsugar">
                 Regular
               </label>
             </div>
           </div>
           <div class="text-end mb-3">
-            <button class="btn btn-light">Add</button>
+            <button class="btn btn-light" data-alpha-pos="add-drink">Add</button>
           </div>
         </div>
       </div>
