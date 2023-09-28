@@ -36,6 +36,7 @@ Drink.prototype.price = function () {
 // const ice = document.querySelectorAll("input[name='ice']")
 // const sugar = document.querySelectorAll("input[name='sugar']")
 const addBtn = document.querySelector('[data-alpha-pos="add-drink"]')
+const checkoutBtn = document.querySelector('[data-alpha-pos="checkout"]')
 
 let orderLists = document.querySelector('[data-order-list]')
 
@@ -71,10 +72,23 @@ addBtn.addEventListener('click', () => {
   }
 
   const drink = new Drink(drinkName, drinkIce, drinkSugar)
-  console.log(drink)
-  console.log(drink.price())
 
   alphaPos.addDrink(drink)
+})
+
+orderLists.addEventListener('click', e => {
+  // e.target.tagName
+  // e.target.classList.value
+  const isDeleteButton = e.target.matches('[data-alpha-pos="delete-drink"]')
+  if (!isDeleteButton) {
+    return
+  }
+  alphaPos.removeDrink(e.target.parentElement.parentElement.parentElement)
+})
+
+checkoutBtn.addEventListener('click', () => {
+  alert(`Total price of drinks: $${alphaPos.checkout()}`)
+  alphaPos.clearOrders(orderLists)
 })
 
 function AlphaPos () {}
@@ -114,32 +128,48 @@ AlphaPos.prototype.addDrink = (drink) => {
   orderLists.insertAdjacentHTML('afterbegin', orderListsCard)
 }
 
+AlphaPos.prototype.removeDrink = (target) => {
+  target.remove()
+}
+
+AlphaPos.prototype.checkout = () => {
+  let totalAmount = 0
+  document.querySelectorAll('[data-drink-price]').forEach(drink => {
+    totalAmount += Number(drink.textContent)
+  })
+  return totalAmount
+}
+
+AlphaPos.prototype.clearOrders = target => {
+  target.querySelectorAll('.card').forEach(card => card.remove())
+}
+
 const alphaPos = new AlphaPos()
 
-function renderOrderList() {
-  console.log('render')
-  order_list.innerHTML = ''
-  orderList.forEach(o => {
-    order_list.innerHTML+=`
-      <div class="card mb-3" style="width: 100%;">
-        <div class="card-body">
-          <div class="text-end">
-            <button type="button" class="btn-close" aria-label="Close" data-alpha-pos="delete-drink"></button>
-          </div>
-          <div>
-            ${o.name}
-          </div>
-          <div>
-            ${o.ice}
-          </div>
-          <div>
-            ${o.sugar}
-          </div>
-        </div>
-        <div class="card-footer text-end text-muted">
-          $ <span data-drink-price>${o.price()}</span>
-        </div>
-      </div>
-    `
-  })
-}
+// function renderOrderList() {
+//   console.log('render')
+//   order_list.innerHTML = ''
+//   orderList.forEach(o => {
+//     order_list.innerHTML+=`
+//       <div class="card mb-3" style="width: 100%;">
+//         <div class="card-body">
+//           <div class="text-end">
+//             <button type="button" class="btn-close" aria-label="Close" data-alpha-pos="delete-drink"></button>
+//           </div>
+//           <div>
+//             ${o.name}
+//           </div>
+//           <div>
+//             ${o.ice}
+//           </div>
+//           <div>
+//             ${o.sugar}
+//           </div>
+//         </div>
+//         <div class="card-footer text-end text-muted">
+//           $ <span data-drink-price>${o.price()}</span>
+//         </div>
+//       </div>
+//     `
+//   })
+// }
