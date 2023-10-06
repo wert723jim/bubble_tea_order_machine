@@ -1,27 +1,104 @@
 // Constructor function for Drinks
-function Drink (name, sugar, ice) {
-  this.name = name
-  this.sugar = sugar
-  this.ice = ice
-}
+// function Drink (name, sugar, ice) {
+//   this.name = name
+//   this.sugar = sugar
+//   this.ice = ice
+// }
+// Drink function constructor
+class Drink {
+  constructor(name, sugar, ice) {
+    this.name = name
+    this.sugar = sugar
+    this.ice = ice
+  }
 
-Drink.prototype.price = function () {
-  switch (this.name) {
-    case 'Black Tea':
-    case 'Oolong Tea':
-    case 'Baozong Tea':
-    case 'Green Tea':
-      return 30
-    case 'Bubble Milk Tea':
-    case 'Lemon Green':
-      return 50
-    case 'Black Tea Latte':
-    case 'Matcha Latte':
-      return 55
-    default:
-      alert('Unknown Drink')
+  price() {
+    switch (this.name) {
+      case 'Black Tea':
+      case 'Oolong Tea':
+      case 'Baozong Tea':
+      case 'Green Tea':
+        return 30
+      case 'Bubble Milk Tea':
+      case 'Lemon Green':
+        return 50
+      case 'Black Tea Latte':
+      case 'Matcha Latte':
+        return 55
+      default:
+        alert('Unknown Drink')
+    }
   }
 }
+// Drink.prototype.price = function () {
+//   switch (this.name) {
+//     case 'Black Tea':
+//     case 'Oolong Tea':
+//     case 'Baozong Tea':
+//     case 'Green Tea':
+//       return 30
+//     case 'Bubble Milk Tea':
+//     case 'Lemon Green':
+//       return 50
+//     case 'Black Tea Latte':
+//     case 'Matcha Latte':
+//       return 55
+//     default:
+//       alert('Unknown Drink')
+//   }
+// }
+
+
+class AlphaPos {
+  getCheckedValue(inputName) {
+    let selectedOption = ''
+    document.querySelectorAll(`input[name='${inputName}']`).forEach( (item) => {
+      if (item.checked) {
+        selectedOption = item.value
+      }
+    })
+    return selectedOption
+  }
+  addDrink(drink) {
+    const orderListsCard = `
+    <div class="card mb-3" style="width: 100%;">
+      <div class="card-body">
+        <div class="text-end">
+          <button type="button" class="btn-close" aria-label="Close" data-alpha-pos="delete-drink"></button>
+        </div>
+        <div>
+          ${drink.name}
+        </div>
+        <div>
+          ${drink.ice}
+        </div>
+        <div>
+          ${drink.sugar}
+        </div>
+      </div>
+      <div class="card-footer text-end text-muted">
+        $ <span data-drink-price>${drink.price()}</span>
+      </div>
+    </div>
+    `
+    orderLists.insertAdjacentHTML('afterbegin', orderListsCard)
+  }
+  removeDrink(target) {
+    target.remove()
+  }
+  checkout() {
+    let totalAmount = 0
+    document.querySelectorAll('[data-drink-price]').forEach(drink => {
+      totalAmount += Number(drink.textContent)
+    })
+    return totalAmount
+  }
+  clearOrders(target) {
+    target.querySelectorAll('.card').forEach(card => card.remove())
+  }
+}
+
+const alphaPos = new AlphaPos()
 
 // let bubbleMilkTea = new Drink('Bubble Milk Tea', 'No Sugar', 'Less Ice')
 // console.log(bubbleMilkTea)
@@ -90,61 +167,61 @@ checkoutBtn.addEventListener('click', () => {
   alert(`Total price of drinks: $${alphaPos.checkout()}`)
   alphaPos.clearOrders(orderLists)
 })
+// AlphaPos function constructor
+// function AlphaPos () {}
 
-function AlphaPos () {}
+// AlphaPos.prototype.getCheckedValue = (inputName) => {
+//   let selectedOption = ''
+//   document.querySelectorAll(`input[name='${inputName}']`).forEach( (item) => {
+//     if (item.checked) {
+//       selectedOption = item.value
+//     }
+//   })
+//   return selectedOption
+// }
 
-AlphaPos.prototype.getCheckedValue = (inputName) => {
-  let selectedOption = ''
-  document.querySelectorAll(`input[name='${inputName}']`).forEach( (item) => {
-    if (item.checked) {
-      selectedOption = item.value
-    }
-  })
-  return selectedOption
-}
+// AlphaPos.prototype.addDrink = (drink) => {
+//   const orderListsCard = `
+//   <div class="card mb-3" style="width: 100%;">
+//     <div class="card-body">
+//       <div class="text-end">
+//         <button type="button" class="btn-close" aria-label="Close" data-alpha-pos="delete-drink"></button>
+//       </div>
+//       <div>
+//         ${drink.name}
+//       </div>
+//       <div>
+//         ${drink.ice}
+//       </div>
+//       <div>
+//         ${drink.sugar}
+//       </div>
+//     </div>
+//     <div class="card-footer text-end text-muted">
+//       $ <span data-drink-price>${drink.price()}</span>
+//     </div>
+//   </div>
+//   `
+//   orderLists.insertAdjacentHTML('afterbegin', orderListsCard)
+// }
 
-AlphaPos.prototype.addDrink = (drink) => {
-  const orderListsCard = `
-  <div class="card mb-3" style="width: 100%;">
-    <div class="card-body">
-      <div class="text-end">
-        <button type="button" class="btn-close" aria-label="Close" data-alpha-pos="delete-drink"></button>
-      </div>
-      <div>
-        ${drink.name}
-      </div>
-      <div>
-        ${drink.ice}
-      </div>
-      <div>
-        ${drink.sugar}
-      </div>
-    </div>
-    <div class="card-footer text-end text-muted">
-      $ <span data-drink-price>${drink.price()}</span>
-    </div>
-  </div>
-  `
-  orderLists.insertAdjacentHTML('afterbegin', orderListsCard)
-}
+// AlphaPos.prototype.removeDrink = (target) => {
+//   target.remove()
+// }
 
-AlphaPos.prototype.removeDrink = (target) => {
-  target.remove()
-}
+// AlphaPos.prototype.checkout = () => {
+//   let totalAmount = 0
+//   document.querySelectorAll('[data-drink-price]').forEach(drink => {
+//     totalAmount += Number(drink.textContent)
+//   })
+//   return totalAmount
+// }
 
-AlphaPos.prototype.checkout = () => {
-  let totalAmount = 0
-  document.querySelectorAll('[data-drink-price]').forEach(drink => {
-    totalAmount += Number(drink.textContent)
-  })
-  return totalAmount
-}
+// AlphaPos.prototype.clearOrders = target => {
+//   target.querySelectorAll('.card').forEach(card => card.remove())
+// }
 
-AlphaPos.prototype.clearOrders = target => {
-  target.querySelectorAll('.card').forEach(card => card.remove())
-}
-
-const alphaPos = new AlphaPos()
+// const alphaPos = new AlphaPos()
 
 // function renderOrderList() {
 //   console.log('render')
